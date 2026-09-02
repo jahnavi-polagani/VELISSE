@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VELISSE | Shop</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf8;
+            color: #292525;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: white;
+            padding: 22px 60px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid #eee5e2;
+        }
+
+
+        .logo {
+            font-size: 28px;
+            letter-spacing: 7px;
+        }
+
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            color: #9b7770;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px 50px;
+        }
+
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: 60px;
+            font-weight: normal;
+            margin: 0 0 20px;
+        }
+
+
+        .hero p {
+            color: #756b68;
+            font-size: 19px;
+            margin: 0;
+        }
+
+
+        /* =========================
+           CATEGORY BUTTONS
+        ========================= */
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+
+            padding: 20px 30px 55px;
+        }
+
+
+        .category-button {
+            display: inline-block;
+
+            padding: 13px 28px;
+
+            border: 1px solid #dfccc7;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            color: #292525;
+
+            background: white;
+
+            transition: 0.3s;
+
+            font-size: 16px;
+        }
+
+
+        .category-button:hover {
+            background: #f5e4e0;
+            border-color: #cba9a2;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-container {
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 0 30px 80px;
+        }
+
+
+        .products-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 35px;
+        }
+
+
+        .product-card {
+            background: white;
+
+            border: 1px solid #eee2df;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
+        }
+
+
+        .product-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(80, 55, 50, 0.08);
+        }
+
+
+        /* =========================
+           PRODUCT IMAGE
+        ========================= */
+
+        .product-image-container {
+            width: 100%;
+
+            height: 430px;
+
+            background: #f7ece9;
+
+            overflow: hidden;
+        }
+
+
+        .product-image {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .no-image {
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #9b8c88;
+
+            background: #f7ece9;
+        }
+
+
+        /* =========================
+           PRODUCT DETAILS
+        ========================= */
+
+        .product-info {
+            padding: 22px;
+        }
+
+
+        .product-name {
+            font-family: Georgia, serif;
+
+            font-size: 23px;
+
+            font-weight: normal;
+
+            margin: 0 0 10px;
+
+            color: #292525;
+        }
+
+
+        .product-description {
+            color: #827672;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+
+        .product-price {
+            font-size: 18px;
+
+            color: #9b7770;
+
+            margin-bottom: 18px;
+        }
+
+
+        .view-button {
+            display: inline-block;
+
+            padding: 11px 25px;
+
+            background: #292525;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+
+        .view-button:hover {
+            background: #9b7770;
+        }
+
+
+        /* =========================
+           EMPTY PRODUCTS
+        ========================= */
+
+        .no-products {
+            text-align: center;
+
+            padding: 80px 20px;
+
+            color: #756b68;
+        }
+
+
+        .no-products h2 {
+            font-family: Georgia, serif;
+
+            font-size: 32px;
+
+            font-weight: normal;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: white;
+
+            border-top: 1px solid #eee5e2;
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            color: #827672;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            header {
+                padding: 20px 30px;
+            }
+
+
+            .products-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 20px;
+
+                flex-direction: column;
+
+                gap: 18px;
+            }
+
+
+            .logo {
+                font-size: 25px;
+
+                letter-spacing: 6px;
+            }
+
+
+            nav {
+                justify-content: center;
+
+                gap: 12px;
+
+                font-size: 14px;
+            }
+
+
+            .hero {
+                padding: 55px 20px 30px;
+            }
+
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+
+            .hero p {
+                font-size: 16px;
+
+                line-height: 1.6;
+            }
+
+
+            .categories {
+                padding:
+                    20px
+                    20px
+                    40px;
+
+                gap: 10px;
+            }
+
+
+            .category-button {
+                padding:
+                    10px 18px;
+
+                font-size: 14px;
+            }
+
+
+            .products-container {
+                padding:
+                    0
+                    15px
+                    50px;
+            }
+
+
+            .products-grid {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+            }
+
+
+            .product-image-container {
+                height: 420px;
+            }
+
+
+            .product-info {
+                padding: 20px;
+            }
+
+
+            .product-name {
+                font-size: 22px;
+            }
+
+
+            .view-button {
+                width: 100%;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        VELISSE
+    </div>
+
+
+    <nav>
+
+        <a href="{% url 'product_list' %}">
+            Home
+        </a>
+
+        <a href="{% url 'shop' %}">
+            Shop
+        </a>
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+        <a href="{% url 'cart' %}">
+            🛒 Cart
+        </a>
+
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'my_orders' %}">
+                My Orders
+            </a>
+
+            <a href="{% url 'logout' %}">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}">
+                Register
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <h1>
+        VELISSE
+    </h1>
+
+    <p>
+        Discover pieces made for beautiful days.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<div class="categories">
+
+    <a
+        href="{% url 'shop' %}"
+        class="category-button"
+    >
+        All
+    </a>
+
+
+    <a
+        href="?category=dresses"
+        class="category-button"
+    >
+        Dresses
+    </a>
+
+
+    <a
+        href="?category=tops"
+        class="category-button"
+    >
+        Tops
+    </a>
+
+
+    <a
+        href="?category=accessories"
+        class="category-button"
+    >
+        Accessories
+    </a>
+
+
+    <a
+        href="?category=jewellery"
+        class="category-button"
+    >
+        Jewellery
+    </a>
+
+
+    <a
+        href="?category=shoes"
+        class="category-button"
+    >
+        Shoes
+    </a>
+
+</div>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<div class="products-container">
+
+
+    {% if products %}
+
+
+        <div class="products-grid">
+
+
+            {% for product in products %}
+
+
+                <div class="product-card">
+
+
+                    <div class="product-image-container">
+
+
+                        {% if product.image %}
+
+                            <img
+                                src="{{ product.image.url }}"
+                                class="product-image"
+                                alt="{{ product.name }}"
+                            >
+
+                        {% else %}
+
+                            <div class="no-image">
+                                No image available
+                            </div>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                    <div class="product-info">
+
+
+                        <h2 class="product-name">
+                            {{ product.name }}
+                        </h2>
+
+
+                        <div class="product-description">
+
+                            {{ product.description|truncatewords:18 }}
+
+                        </div>
+
+
+                        <div class="product-price">
+
+                            ₹{{ product.price }}
+
+                        </div>
+
+
+                        <a
+                            href="{% url 'product_detail' product.id %}"
+                            class="view-button"
+                        >
+                            View Product
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+    {% else %}
+
+
+        <div class="no-products">
+
+            <h2>
+                No products found
+            </h2>
+
+            <p>
+                We couldn't find anything in this category.
+            </p>
+
+            <a
+                href="{% url 'shop' %}"
+                class="view-button"
+            >
+                View All Products
+            </a>
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        VELISSE ♡
+    </p>
+
+    <p>
+        Soft pieces for beautiful days.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

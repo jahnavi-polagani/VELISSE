@@ -1,0 +1,203 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+VELISSE | About
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+
+    .about-page {
+        min-height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 70px 20px;
+        background:
+            radial-gradient(
+                circle at 15% 20%,
+                rgba(244, 216, 210, 0.35),
+                transparent 25%
+            ),
+            radial-gradient(
+                circle at 85% 80%,
+                rgba(235, 215, 222, 0.35),
+                transparent 25%
+            ),
+            #fffaf8;
+    }
+
+
+    .about-card {
+        width: 100%;
+        max-width: 850px;
+        box-sizing: border-box;
+        padding: 75px 80px;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid #eee1dd;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 15px 45px rgba(80, 55, 50, 0.06);
+    }
+
+
+    .small-title {
+        color: #c2938d;
+        font-size: 13px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+    }
+
+
+    .about-card h1 {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: 52px;
+        font-weight: normal;
+        letter-spacing: 2px;
+        color: #3a3230;
+    }
+
+
+    .decorative-line {
+        width: 55px;
+        height: 1px;
+        margin: 28px auto;
+        background: #d9aaa2;
+    }
+
+
+    .about-card .welcome {
+        max-width: 650px;
+        margin: 0 auto;
+        font-family: Georgia, serif;
+        font-size: 20px;
+        line-height: 1.9;
+        color: #625754;
+    }
+
+
+    .about-card .description {
+        max-width: 650px;
+        margin: 25px auto 0;
+        font-size: 16px;
+        line-height: 2;
+        color: #7b6e6a;
+    }
+
+
+    .collection {
+        margin-top: 40px;
+        padding: 25px 30px;
+        background: #fff5f2;
+        border-radius: 18px;
+        color: #756762;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    .signature {
+        margin-top: 45px;
+        font-family: Georgia, serif;
+        font-size: 22px;
+        font-style: italic;
+        color: #a87972;
+    }
+
+
+    .heart {
+        font-size: 24px;
+        margin-left: 5px;
+    }
+
+
+    @media (max-width: 700px) {
+
+        .about-page {
+            padding: 40px 15px;
+        }
+
+
+        .about-card {
+            padding: 50px 25px;
+            border-radius: 22px;
+        }
+
+
+        .about-card h1 {
+            font-size: 40px;
+        }
+
+
+        .about-card .welcome {
+            font-size: 18px;
+        }
+
+
+        .about-card .description {
+            font-size: 15px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="about-page">
+
+    <div class="about-card">
+
+        <div class="small-title">
+            Our Story
+        </div>
+
+
+        <h1>
+            About VELISSE
+        </h1>
+
+
+        <div class="decorative-line"></div>
+
+
+        <p class="welcome">
+            Welcome to <strong>VELISSE</strong>, a little corner
+            created for soft, elegant and beautiful things,
+            inspired by the gentle charm of pastel tones.
+        </p>
+
+
+        <p class="description">
+            We believe that everyday pieces can feel special.
+            Our collection is inspired by simplicity, femininity,
+            softness, and the little details that make your style
+            uniquely yours.
+        </p>
+
+
+        <div class="collection">
+
+            From delicate dresses to pretty accessories,
+            every piece is chosen to bring a touch of beauty
+            and elegance into your everyday moments.
+
+        </div>
+
+
+        <div class="signature">
+            With Love, VELISSE
+            <span class="heart">♡</span>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

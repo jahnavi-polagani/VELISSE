@@ -1,0 +1,325 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+VELISSE | Contact
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+
+    .contact-page {
+        min-height: 75vh;
+        padding: 70px 20px;
+        background:
+            radial-gradient(
+                circle at 15% 20%,
+                rgba(244, 216, 210, 0.35),
+                transparent 25%
+            ),
+            radial-gradient(
+                circle at 85% 80%,
+                rgba(235, 215, 222, 0.35),
+                transparent 25%
+            ),
+            #fffaf8;
+    }
+
+
+    .contact-container {
+        max-width: 1000px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 35px;
+    }
+
+
+    .contact-intro,
+    .contact-form-box {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #eee1dd;
+        border-radius: 28px;
+        padding: 45px;
+        box-shadow: 0 15px 40px rgba(80, 55, 50, 0.05);
+    }
+
+
+    .small-title {
+        color: #c2938d;
+        font-size: 13px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+
+    .contact-intro h1 {
+        font-family: Georgia, serif;
+        font-size: 45px;
+        font-weight: normal;
+        color: #3a3230;
+        margin: 0 0 25px;
+    }
+
+
+    .contact-intro p {
+        color: #756b68;
+        line-height: 1.9;
+        font-size: 16px;
+    }
+
+
+    .contact-note {
+        margin-top: 35px;
+        padding: 22px;
+        background: #fff4f1;
+        border-radius: 16px;
+        color: #756b68;
+        line-height: 1.7;
+    }
+
+
+    .contact-form-box h2 {
+        font-family: Georgia, serif;
+        font-size: 30px;
+        font-weight: normal;
+        color: #3a3230;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #5f5552;
+        font-size: 14px;
+    }
+
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 13px 15px;
+        border: 1px solid #dfd1cd;
+        border-radius: 12px;
+        background: #fffaf8;
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+    }
+
+
+    .form-group textarea {
+        min-height: 140px;
+        resize: vertical;
+    }
+
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #c2938d;
+    }
+
+
+    .send-button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        background: #292525;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+
+    .send-button:hover {
+        background: #9b7770;
+    }
+
+
+    .success-message {
+        margin-bottom: 20px;
+        padding: 13px;
+        background: #edf5ed;
+        color: #5d765d;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+
+    .signature {
+        margin-top: 35px;
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: #a87972;
+        font-size: 19px;
+    }
+
+
+    @media (max-width: 750px) {
+
+        .contact-container {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-intro,
+        .contact-form-box {
+            padding: 30px;
+        }
+
+        .contact-intro h1 {
+            font-size: 38px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="contact-page">
+
+    <div class="contact-container">
+
+
+        <div class="contact-intro">
+
+            <div class="small-title">
+                We'd Love To Hear From You
+            </div>
+
+
+            <h1>
+                Get in Touch
+            </h1>
+
+
+            <p>
+                Have a question about an order, a product, or
+                anything VELISSE?
+            </p>
+
+
+            <p>
+                Send us a message and we'll be happy to hear from
+                you. Whether it's a little question or simply a
+                hello, your message means a lot to us.
+            </p>
+
+
+            <div class="contact-note">
+
+                We believe that every beautiful experience starts
+                with a simple conversation. ♡
+
+            </div>
+
+
+            <div class="signature">
+                With Love, VELISSE ♡
+            </div>
+
+        </div>
+
+
+        <div class="contact-form-box">
+
+            <h2>
+                Send a Message
+            </h2>
+
+
+            {% if success %}
+
+                <div class="success-message">
+                    {{ success }}
+                </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="send-button"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

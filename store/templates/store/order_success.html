@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VELISSE | Order Confirmed</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(244, 216, 210, 0.45),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(235, 215, 222, 0.45),
+                    transparent 30%
+                ),
+                #fffaf8;
+
+            color: #292525;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+
+            padding: 22px 60px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-bottom: 1px solid #eee5e2;
+        }
+
+
+        .logo {
+            font-size: 28px;
+
+            letter-spacing: 7px;
+        }
+
+
+        nav {
+            display: flex;
+
+            gap: 25px;
+        }
+
+
+        nav a {
+            text-decoration: none;
+
+            color: #333;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            color: #9b7770;
+        }
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        .success-page {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 50px 20px;
+        }
+
+
+        .success-card {
+            width: 100%;
+
+            max-width: 650px;
+
+            padding: 60px 45px;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            border: 1px solid #eee1dd;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px rgba(80, 55, 50, 0.07);
+        }
+
+
+        .heart {
+            width: 80px;
+
+            height: 80px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f4dfda;
+
+            font-size: 34px;
+        }
+
+
+        .success-card h1 {
+            margin: 0;
+
+            font-family: Georgia, serif;
+
+            font-size: 43px;
+
+            font-weight: normal;
+
+            color: #3a3230;
+        }
+
+
+        .success-card .subtitle {
+            margin-top: 15px;
+
+            color: #8a7c78;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        .customer-name {
+            color: #a87972;
+
+            font-family: Georgia, serif;
+
+            font-size: 20px;
+        }
+
+
+        .message {
+            margin: 30px auto;
+
+            max-width: 500px;
+
+            padding: 20px;
+
+            background: #fffaf8;
+
+            border-radius: 16px;
+
+            color: #756b68;
+
+            line-height: 1.7;
+        }
+
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+        }
+
+
+        .button {
+            display: inline-block;
+
+            padding: 14px 30px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+
+        .primary-button {
+            background: #292525;
+
+            color: white;
+        }
+
+
+        .primary-button:hover {
+            background: #9b7770;
+        }
+
+
+        .secondary-button {
+            background: #f2e3df;
+
+            color: #5f5552;
+        }
+
+
+        .secondary-button:hover {
+            background: #e7d2cd;
+        }
+
+
+        .signature {
+            margin-top: 35px;
+
+            color: #a87972;
+
+            font-family: Georgia, serif;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .success-card {
+                padding: 45px 25px;
+            }
+
+
+            .success-card h1 {
+                font-size: 36px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        VELISSE
+    </div>
+
+
+    <nav>
+
+        <a href="{% url 'product_list' %}">
+            Home
+        </a>
+
+        <a href="{% url 'shop' %}">
+            Shop
+        </a>
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+        <a href="{% url 'cart' %}">
+            🛒 Cart
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     SUCCESS MESSAGE
+========================= -->
+
+<div class="success-page">
+
+
+    <div class="success-card">
+
+
+        <div class="heart">
+            ♡
+        </div>
+
+
+        <h1>
+            Order Confirmed
+        </h1>
+
+
+        <p class="subtitle">
+
+            Thank you for shopping with VELISSE.
+
+            <br>
+
+            Your order has been placed successfully.
+
+        </p>
+
+
+        {% if customer_name %}
+
+            <div class="customer-name">
+
+                Thank you, {{ customer_name }} ♡
+
+            </div>
+
+        {% endif %}
+
+
+        <div class="message">
+
+            Your beautiful pieces are now getting ready
+            to make their way to you.
+
+            <br><br>
+
+            We hope you love them as much as we loved
+            putting them together for you.
+
+        </div>
+
+
+        <div class="buttons">
+
+
+            {% if user.is_authenticated %}
+
+                <a
+                    href="{% url 'my_orders' %}"
+                    class="button primary-button"
+                >
+                    View My Orders
+                </a>
+
+            {% endif %}
+
+
+            <a
+                href="{% url 'product_list' %}"
+                class="button secondary-button"
+            >
+                Continue Shopping
+            </a>
+
+
+        </div>
+
+
+        <div class="signature">
+
+            With Love, VELISSE ♡
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

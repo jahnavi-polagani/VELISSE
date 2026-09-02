@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ product.name }} | VELISSE</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #fffaf8;
+
+            color: #292525;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: white;
+
+            padding: 22px 60px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-bottom: 1px solid #eee5e2;
+        }
+
+
+        .logo {
+            font-size: 28px;
+
+            letter-spacing: 7px;
+        }
+
+
+        nav {
+            display: flex;
+
+            gap: 25px;
+
+            flex-wrap: wrap;
+        }
+
+
+        nav a {
+            text-decoration: none;
+
+            color: #333;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            color: #9b7770;
+        }
+
+
+        /* =========================
+           PRODUCT PAGE
+        ========================= */
+
+        .product-page {
+            max-width: 1100px;
+
+            margin: 70px auto;
+
+            padding: 20px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+        }
+
+
+        .product-image {
+            width: 100%;
+
+            height: 600px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            background: #f5e9e7;
+        }
+
+
+        .no-image {
+            height: 600px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f5e9e7;
+
+            border-radius: 20px;
+
+            color: #999;
+        }
+
+
+        /* =========================
+           PRODUCT DETAILS
+        ========================= */
+
+        .details {
+            padding-top: 40px;
+        }
+
+
+        .details h1 {
+            font-family: Georgia, serif;
+
+            font-size: 45px;
+
+            font-weight: normal;
+
+            margin-bottom: 15px;
+
+            color: #3a3230;
+        }
+
+
+        .category {
+            color: #a87972;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .price {
+            font-size: 24px;
+
+            margin: 25px 0;
+
+            color: #5f5552;
+        }
+
+
+        .description {
+            color: #756b68;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           SIZE
+        ========================= */
+
+        .size-section {
+            margin-top: 30px;
+
+            padding: 20px;
+
+            background: #f7e9e5;
+
+            border-radius: 15px;
+        }
+
+
+        .size-section strong {
+            display: block;
+
+            margin-bottom: 15px;
+
+            color: #5f5552;
+        }
+
+
+        .size-options {
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .size-button {
+            width: 48px;
+
+            height: 42px;
+
+            border: 1px solid #d8c1bb;
+
+            background: #fffaf8;
+
+            color: #5f5552;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .size-button:hover {
+            background: #ead5d0;
+        }
+
+
+        .size-button.selected {
+            background: #292525;
+
+            color: white;
+
+            border-color: #292525;
+        }
+
+
+        #size-error {
+            display: none;
+
+            margin-top: 15px;
+
+            color: #b15f59;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ADD TO CART
+        ========================= */
+
+        .add-button {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            padding: 15px 45px;
+
+            background: #292525;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 30px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .add-button:hover {
+            background: #9b7770;
+        }
+
+
+        .back {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            color: #777;
+
+            text-decoration: none;
+        }
+
+
+        .back:hover {
+            color: #9b7770;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav {
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .product-page {
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+
+                margin: 30px auto;
+            }
+
+
+            .product-image,
+            .no-image {
+                height: 450px;
+            }
+
+
+            .details {
+                padding-top: 10px;
+            }
+
+
+            .details h1 {
+                font-size: 36px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        VELISSE
+    </div>
+
+
+    <nav>
+
+        <a href="{% url 'product_list' %}">
+            Home
+        </a>
+
+        <a href="{% url 'shop' %}">
+            Shop
+        </a>
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+        <a href="{% url 'cart' %}">
+            🛒 Cart
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     PRODUCT
+========================= -->
+
+<div class="product-page">
+
+
+    <!-- PRODUCT IMAGE -->
+
+    <div>
+
+        {% if product.image %}
+
+            <img
+                src="{{ product.image.url }}"
+                class="product-image"
+                alt="{{ product.name }}"
+            >
+
+        {% else %}
+
+            <div class="no-image">
+
+                No image available
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- PRODUCT DETAILS -->
+
+    <div class="details">
+
+
+        <div class="category">
+
+            {{ product.get_category_display }}
+
+        </div>
+
+
+        <h1>
+            {{ product.name }}
+        </h1>
+
+
+        <div class="price">
+
+            ₹{{ product.price }}
+
+        </div>
+
+
+        <div class="description">
+
+            {{ product.description }}
+
+        </div>
+
+
+        <!-- =========================
+             SIZE SELECTION
+        ========================= -->
+
+        {% if product.category == 'dresses' %}
+
+            <div class="size-section">
+
+                <strong>
+                    Choose your size
+                </strong>
+
+
+                <div class="size-options">
+
+
+                    <button
+                        type="button"
+                        class="size-button"
+                        onclick="selectSize(this)"
+                    >
+                        XS
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="size-button"
+                        onclick="selectSize(this)"
+                    >
+                        S
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="size-button"
+                        onclick="selectSize(this)"
+                    >
+                        M
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="size-button"
+                        onclick="selectSize(this)"
+                    >
+                        L
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- =========================
+             ADD TO CART FORM
+        ========================= -->
+
+        <form
+            method="POST"
+            action="{% url 'add_to_cart' product.id %}"
+            onsubmit="return checkSize()"
+        >
+
+            {% csrf_token %}
+
+
+            {% if product.category == 'dresses' %}
+
+                <input
+                    type="hidden"
+                    name="size"
+                    id="selected-size"
+                >
+
+
+                <div id="size-error">
+                    Please select a size.
+                </div>
+
+            {% endif %}
+
+
+            <button
+                type="submit"
+                class="add-button"
+            >
+                Add to Cart
+            </button>
+
+        </form>
+
+
+        <br>
+
+
+        <a
+            href="{% url 'shop' %}"
+            class="back"
+        >
+            ← Back to Shop
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+function selectSize(button) {
+
+    const buttons =
+        document.querySelectorAll(
+            '.size-button'
+        );
+
+
+    buttons.forEach(
+        function(btn) {
+
+            btn.classList.remove(
+                'selected'
+            );
+
+        }
+    );
+
+
+    button.classList.add(
+        'selected'
+    );
+
+
+    const selectedSize =
+        document.getElementById(
+            'selected-size'
+        );
+
+
+    if (selectedSize) {
+
+        selectedSize.value =
+            button.textContent.trim();
+
+    }
+
+
+    const error =
+        document.getElementById(
+            'size-error'
+        );
+
+
+    if (error) {
+
+        error.style.display = 'none';
+
+    }
+
+}
+
+
+function checkSize() {
+
+    const selectedSize =
+        document.getElementById(
+            'selected-size'
+        );
+
+
+    /*
+
+       If the product is not a dress,
+       there is no size field.
+
+       Therefore the form can
+       submit normally.
+
+    */
+
+    if (!selectedSize) {
+
+        return true;
+
+    }
+
+
+    if (
+        selectedSize.value === ''
+    ) {
+
+        const error =
+            document.getElementById(
+                'size-error'
+            );
+
+
+        if (error) {
+
+            error.style.display =
+                'block';
+
+        }
+
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+VELISSE | Create Account
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+
+    .auth-page {
+        min-height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        background:
+            radial-gradient(
+                circle at 15% 20%,
+                rgba(244, 216, 210, 0.35),
+                transparent 25%
+            ),
+            radial-gradient(
+                circle at 85% 80%,
+                rgba(235, 215, 222, 0.35),
+                transparent 25%
+            ),
+            #fffaf8;
+    }
+
+
+    .auth-card {
+        width: 100%;
+        max-width: 450px;
+        padding: 50px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid #eee1dd;
+        border-radius: 28px;
+        box-shadow: 0 15px 45px rgba(80, 55, 50, 0.06);
+    }
+
+
+    .auth-card h1 {
+        margin: 0;
+        text-align: center;
+        font-family: Georgia, serif;
+        font-size: 40px;
+        font-weight: normal;
+        color: #3a3230;
+    }
+
+
+    .auth-subtitle {
+        text-align: center;
+        color: #8a7c78;
+        margin: 15px 0 35px;
+        line-height: 1.6;
+    }
+
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #5f5552;
+        font-size: 14px;
+    }
+
+
+    .form-group input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px 15px;
+        border: 1px solid #dfd1cd;
+        border-radius: 12px;
+        background: #fffaf8;
+        font-size: 15px;
+    }
+
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #c2938d;
+    }
+
+
+    .error-message {
+        margin-bottom: 20px;
+        padding: 12px;
+        background: #fbe9e7;
+        color: #9b5d57;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+
+    .register-button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        background: #292525;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+
+    .register-button:hover {
+        background: #9b7770;
+    }
+
+
+    .login-link {
+        text-align: center;
+        margin-top: 25px;
+        color: #756b68;
+        font-size: 14px;
+    }
+
+
+    .login-link a {
+        color: #a87972;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+
+
+    @media (max-width: 500px) {
+
+        .auth-card {
+            padding: 35px 25px;
+        }
+
+        .auth-card h1 {
+            font-size: 34px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <h1>
+            Create Account
+        </h1>
+
+
+        <p class="auth-subtitle">
+            Join the VELISSE community ♡
+        </p>
+
+
+        {% if error %}
+
+            <div class="error-message">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Choose a username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="register-button"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
